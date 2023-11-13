@@ -1,0 +1,1 @@
+{"tag": "function", "depth": 1, "time": 1698647767.6523972, "data": {"name": "connect_device", "call_args": {"uri": "ios:///http://127.0.0.1:8300"}, "start_time": 1698647767.4073422, "ret": "<IOS '00008110-000E79942EBB801E'>", "end_time": 1698647767.65239}}
