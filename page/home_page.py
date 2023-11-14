@@ -30,13 +30,23 @@ class HomePage(BaseElement):
         糊弄写法,得到3000关
         :return:
         """
-        self.image_click([967, 1024])
+        self.image_click([1228, 1396])
         self.sleep_time(1)
-        self.image_click([556, 1181])
+        self.image_click([698, 1587])
         self.sleep_time(1)
-        self.image_click([274, 1649])
-        self.image_click([1060, 1640], times=3)
-        self.image_click([778, 1519])
+        self.image_click([909, 2054])
+        self.image_click([540, 2767], times=3)
+        self.image_click([1243, 2290])
+        return self
+
+    def ios_get_level_3000(self):
+        self.image_click([1107, 1214])
+        self.sleep_time(1)
+        self.image_click([636, 1352])
+        self.sleep_time(1)
+        self.image_click([315, 1948])
+        self.image_click([1223, 1979], times=3)
+        self.image_click([814, 1797])
         return self
 
     def home_goto_game(self):
@@ -52,11 +62,9 @@ class HomePage(BaseElement):
         return self
 
 
-
-
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "ios:///http://127.0.0.1:8300", ])
 
-    HomePage().install_ios()
+    HomePage().ios_get_level_3000()

@@ -12,8 +12,9 @@ from base.base_app import SortBallApp
 class PrivacyPage(BaseElement, SortBallApp):
     ballsort_package = "game.ballsort.inner"
     ballsort_ios_package = "ios.game.ballsort.inner"
+    package_name = "BallSort"
 
-    ballsort_ios_install = r"/Users/amber/Downloads/BallSort_IOS_6.ipa"
+    ballsort_ios_install = r"/Users/amber/Downloads/BallSort_IOS_1040_1.ipa"
     system_notifications_button = Template(r"../picture/privacy_page/system_notifications_button.png",
                                            record_pos=(0.001, 0.447), resolution=(1440, 3088))
     accept_button = Template(r"../picture/privacy_page/accept_button.png", target_pos=6, record_pos=(-0.256, 0.194),
@@ -43,7 +44,13 @@ class PrivacyPage(BaseElement, SortBallApp):
         # 安装iOS包
         self.install_ios(self.ballsort_ios_install)
         # 首次打开iOS包
-        self.sleep_time(20)
+        self.ios_open_app(self.package_name)
+        self.sleep_time()
+        self.image_click([644, 1739])
+        self.sleep_time()
+        self.image_click([640, 1570])
+        self.sleep_time()
+        self.image_click([644, 1570])
         return self
 
     def first_open_android(self):
@@ -76,4 +83,4 @@ if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "ios:///http://127.0.0.1:8300", ])
-    PrivacyPage().stast_ios_app()
+    PrivacyPage().first_open()

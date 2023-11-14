@@ -35,6 +35,8 @@ class GamePage(BaseElement):
     quit_button = Template(r"../picture/game_page/quit_button.png", record_pos=(-0.224, 0.1), resolution=(1440, 3088))
     reward_use_button = Template(r"../picture/game_page/reward_use_button.png", target_pos=6,
                                  record_pos=(-0.242, 0.307), resolution=(1440, 3088))
+    withdraw_button = Template(r"../picture/game_page/withdraw_button.png", record_pos=(0.249, -0.912),
+                               resolution=(1284, 2778))
 
     def game_victory(self):
         """
@@ -172,10 +174,6 @@ class GamePage(BaseElement):
         self.image_click([1015, 1807])
         return self
 
-
-
-
-
     def special_play(self):
         """
         在特殊关卡说明页面点击play，进入特殊关卡
@@ -213,8 +211,31 @@ class GamePage(BaseElement):
         return self
 
     def reward_page_use(self):
-        if exists(self.reward_use_button):
-            self.image_click(self.reward_use_button)
+        if not exists(self.reward_use_button):
+            self.image_click([737, 2472])
         else:
-            self.image_click([717, 1983])
+            self.image_click(self.reward_use_button)
         self.sleep_time()
+        return self
+
+    def reward_page_no_use(self):
+        self.image_click([737, 2472])
+        self.sleep_time()
+        self.image_click([604, 2117])
+        self.sleep_time()
+        return self
+
+    def click_withdraw(self):
+        """
+        点击撤回道具，弹出无法撤回toast
+        :return:
+        """
+        self.image_click([956, 233])
+        return self
+
+
+if __name__ == "__main__":
+    if not cli_setup():
+        auto_setup(__file__, logdir=True, devices=[
+            "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
+    GamePage().click_withdraw()

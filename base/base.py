@@ -4,6 +4,7 @@
 # Time: 2023/10/25 2:47 下午
 from airtest.core.api import *
 from airtest.cli.parser import cli_setup
+from poco.drivers.ios import iosPoco
 
 name = "你好"
 language = "英语"
@@ -63,6 +64,17 @@ class BaseElement:
         for i in range(times):
             keyevent("back")
             self.sleep_time()
+
+    def ios_open_app(self, app_name):
+        """
+        airtest中的[start_app]不支持iOS17
+        游戏的名称永远是英文的，所以使用poco的方式打开应用
+        :param app_name:app在首页显示的应用名字
+        :return:
+        """
+        poco = iosPoco()
+        poco(app_name).click()
+        return self
 
 
 if __name__ == "__main__":
