@@ -2,6 +2,8 @@
 # Author: Zoe
 # File: base.py
 # Time: 2023/10/25 2:47 下午
+import subprocess
+
 from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 from poco.drivers.ios import iosPoco
@@ -75,11 +77,16 @@ class BaseElement:
         poco = iosPoco()
         poco(app_name).click()
         return self
-
+def connect_adb(device_ip, port=5037):
+        command = f"adb connect {device_ip}:{port}"
+        subprocess.run(command, shell=True)
 
 if __name__ == "__main__":
-    if not cli_setup():
-        auto_setup(__file__, logdir=True, devices=[
-            "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
+    # if not cli_setup():
+    #     auto_setup(__file__, logdir=True, devices=[
+    #         "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
 
-    BaseElement().get_snapshot(name, language)
+
+
+    # 调用函数连接ADB
+    connect_adb("10.10.1.246")

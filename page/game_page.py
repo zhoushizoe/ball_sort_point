@@ -43,11 +43,12 @@ class GamePage(BaseElement):
         点击游戏胜利页面的胜利按钮进入下一关
         :return:
         """
-        if exists(self.next_button):
-            self.image_click(self.next_button)
-        else:
-            self.image_click([645, 1994])
-            self.sleep_time()
+        # if exists(self.next_button):
+        #     self.image_click(self.next_button)
+        # else:
+        #     self.image_click([645, 1994])
+        #     self.sleep_time()
+        self.image_click([734, 2172])
         return self
 
     def goto_setting(self):
