@@ -4,8 +4,19 @@ app_first_open: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : app_first_open =
 privacy_pv:  "A_ANALYSIS : FIREBASE     : EVENT_SEND       : privacy_pv =>"
 # 点击服务协议
 terms_of_service_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : terms_of_service_click =>"
+# 点击隐私协议
+privacy_policy_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : privacy_policy_click =>"
+# 在隐私弹窗页面点击同意按钮
+privacy_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : privacy_click =>"
 # 打开游戏（非首次）
 app_open: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : app_open =>"
+# 退出游戏，游戏从前台到后台，包括杀进程
+app_quit: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : app_quit =>"
+# 杀掉游戏进程
+app_kill: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : app_kill =>"
+# 游戏初始化
+app_init: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : app_init =>"
 # 玩家开始新的一局
 game_new_start: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : game_new_start"
-
+# 玩家从后台回来，继续游戏
+game_continue: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : game_continue"

@@ -19,6 +19,7 @@ class BaseElement:
 
     def image_click(self, image, times=1):
         touch(image, times)
+        return self
 
         # 使用图像识别拖动
 
@@ -77,16 +78,22 @@ class BaseElement:
         poco = iosPoco()
         poco(app_name).click()
         return self
-def connect_adb(device_ip, port=5037):
-        command = f"adb connect {device_ip}:{port}"
-        subprocess.run(command, shell=True)
+
+    def keyevent_command(self, command):
+        keyevent(command)
+        return self
+
+    def kill_app(self):
+        # self.keyevent_command("POWER")
+        self.image_swipe([700, 3048], [651, 2827])
+        self.image_click([308, 3009])
+        self.image_click([749, 2426])
+        return self
+
 
 if __name__ == "__main__":
-    # if not cli_setup():
-    #     auto_setup(__file__, logdir=True, devices=[
-    #         "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
+    if not cli_setup():
+        auto_setup(__file__, logdir=True, devices=[
+            "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
 
-
-
-    # 调用函数连接ADB
-    connect_adb("10.10.1.246")
+    BaseElement().kill_app()

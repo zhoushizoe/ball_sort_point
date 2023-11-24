@@ -19,6 +19,8 @@ class PrivacyPage(BaseElement, SortBallApp):
                                            record_pos=(0.001, 0.447), resolution=(1440, 3088))
     accept_button = Template(r"../picture/privacy_page/accept_button.png", target_pos=6, record_pos=(-0.256, 0.194),
                              resolution=(1440, 3088))
+    # 服务条款与隐私协议里的close按钮
+    policy_close = Template(r"../picture/privacy_page/policy_close.png", record_pos=(0.0, 0.979), resolution=(1440, 3088))
 
     language = "英语_13pro_max"
     name = rf"{language}/{language}"
@@ -78,9 +80,44 @@ class PrivacyPage(BaseElement, SortBallApp):
         self.sleep_time(4)
         return GamePlayGuide
 
+    def click_terms_of_service(self):
+        """
+        点击terms_of_service按钮
+        :return:
+        """
+        self.image_click([823, 1357])
+        if assert_exists(self.policy_close):
+            return self
+        else:
+            self.image_click([784, 1352])
+            return self
+
+    def click_policy_close(self):
+        """
+        在隐私弹窗和服务条款h5页面，然后点击close退出
+        :return:
+        """
+        self.image_click(self.policy_close)
+        self.sleep_time()
+        return self
+
+    def click_privacy_policy(self):
+        """
+        在隐私弹窗页面点击进入隐私弹窗h5页面
+        :return:
+        """
+        self.image_click([377, 1450])
+        if assert_exists(self.policy_close):
+            return self
+        else:
+            self.image_click([411, 1450])
+            return self
+
+
+
 
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
-            "ios:///http://127.0.0.1:8300", ])
-    PrivacyPage().first_open()
+            "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
+    PrivacyPage().click_privacy_policy()

@@ -1,2 +1,0 @@
-game_new_start => {activity_id:0,activity_name:classic,levelid:2,scene:new,rank_lid:2,
-game_new_start => {activity_id:0,activity_name:classic,levelid:4,scene:new,rank_lid:4,

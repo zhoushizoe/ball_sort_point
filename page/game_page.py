@@ -37,6 +37,9 @@ class GamePage(BaseElement):
                                  record_pos=(-0.242, 0.307), resolution=(1440, 3088))
     withdraw_button = Template(r"../picture/game_page/withdraw_button.png", record_pos=(0.249, -0.912),
                                resolution=(1284, 2778))
+    # 重开按钮
+    restart_button = Template(r"../picture/game_page/restart_button.png", record_pos=(-0.243, -0.906),
+                              resolution=(1440, 3088))
 
     def game_victory(self):
         """
@@ -234,9 +237,16 @@ class GamePage(BaseElement):
         self.image_click([956, 233])
         return self
 
+    def click_restart(self):
+        """
+        点击重开按钮
+        :return:
+        """
+        self.image_click(self.restart_button)
+
 
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
-    GamePage().click_withdraw()
+    GamePage().click_restart()
