@@ -20,7 +20,8 @@ class PrivacyPage(BaseElement, SortBallApp):
     accept_button = Template(r"../picture/privacy_page/accept_button.png", target_pos=6, record_pos=(-0.256, 0.194),
                              resolution=(1440, 3088))
     # 服务条款与隐私协议里的close按钮
-    policy_close = Template(r"../picture/privacy_page/policy_close.png", record_pos=(0.0, 0.979), resolution=(1440, 3088))
+    policy_close = Template(r"../picture/privacy_page/policy_close.png", record_pos=(0.0, 0.979),
+                            resolution=(1440, 3088))
 
     language = "英语_13pro_max"
     name = rf"{language}/{language}"
@@ -114,10 +115,7 @@ class PrivacyPage(BaseElement, SortBallApp):
             return self
 
 
-
-
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
-    PrivacyPage().click_privacy_policy()

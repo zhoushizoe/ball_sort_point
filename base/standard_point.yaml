@@ -20,3 +20,21 @@ app_init: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : app_init =>"
 game_new_start: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : game_new_start"
 # 玩家从后台回来，继续游戏
 game_continue: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : game_continue"
+# 同色收集完成,每一个颜色收集完成时上报
+same_color_finish: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : same_color_finish"
+#关卡胜利	关卡胜利最后一步的球移动完，礼花特效结束时上报
+game_win: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : game_win"
+# 首页展示	首页展示时上报
+home_page: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : home_page"
+# 首页点击Play	首页点击level开始游戏
+home_play_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : home_play_click"
+# 关卡重开	关卡重开时上报
+game_restart: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : game_restart"
+# 游戏操作	玩家发生游玩操作时上报
+game_action: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : game_action"
+# 道具点击	玩家点击道具button时上报
+item_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : item_click"
+# 获得道具	每次玩家获得道具，数量增加时上报
+get_item: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : get_item"
+# 道具使用成功	玩家发生道具使用时上报
+item_action: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : item_action"

@@ -10,6 +10,8 @@ from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 from base.base import BaseElement
 from page.home_page import HomePage
+from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+
 
 
 class GamePage(BaseElement):
@@ -40,6 +42,7 @@ class GamePage(BaseElement):
     # 重开按钮
     restart_button = Template(r"../picture/game_page/restart_button.png", record_pos=(-0.243, -0.906),
                               resolution=(1440, 3088))
+
 
     def game_victory(self):
         """
@@ -158,7 +161,7 @@ class GamePage(BaseElement):
         return self
 
     def debug_goto_normal(self):
-        self.image_click([1084, 1198])
+        self.image_click([1219, 1415])
         self.sleep_time()
         return self
 
@@ -167,8 +170,8 @@ class GamePage(BaseElement):
         self.sleep_time()
         return self
 
-    def deg_get_level_site(self):
-        self.image_click([645, 1377])
+    def debug_get_level_site(self):
+        self.image_click([766, 1592])
         self.sleep_time()
         return self
 
@@ -234,7 +237,7 @@ class GamePage(BaseElement):
         点击撤回道具，弹出无法撤回toast
         :return:
         """
-        self.image_click([956, 233])
+        self.image_click([1101, 221])
         return self
 
     def click_restart(self):
@@ -243,10 +246,22 @@ class GamePage(BaseElement):
         :return:
         """
         self.image_click(self.restart_button)
+        return self
+
+    def get_level_12(self):
+        self.debug_goto_normal().debug_get_level_site().image_click([1253, 2054])
+        self.image_click([1253, 2054]).image_click([176, 2074], times=2).image_click([1287, 2300])
+        return self
+
+    def ad_close(self):
+        self.sleep_time(15)
+        self.keyevent_command("BACK")
+        return self
+
 
 
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
-    GamePage().click_restart()
+    GamePage().goto_level2_get_debug()
