@@ -10,9 +10,10 @@ from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 from base.base import BaseElement
 from page.home_page import HomePage
-from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 
 
+# from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+# from poco.drivers.unity3d import UnityPoco
 
 class GamePage(BaseElement):
     next_button = Template(r"../picture/game_page/next_button.png", record_pos=(-0.227, 0.528), resolution=(1440, 3088))
@@ -43,18 +44,46 @@ class GamePage(BaseElement):
     restart_button = Template(r"../picture/game_page/restart_button.png", record_pos=(-0.243, -0.906),
                               resolution=(1440, 3088))
 
+    # 英语nextbutton
+    victory_english_button = Template(r"../picture/game_page/victory_english_button.png", record_pos=(-0.01, 0.638),
+                                      resolution=(1440, 3088))
+    # 开宝箱的claim按钮
+    claim_button = Template(r"../picture/game_page/claim_button.png", record_pos=(0.001, 0.739),
+                            resolution=(1440, 3088))
+    # 广告关闭按钮
+    ad_close_button = Template(r"../picture/game_page/ad_close_button.png", record_pos=(0.454, -0.953),
+                               resolution=(1440, 3088))
+    # 新增加的获得道具弹窗中的看广告获得道具
+    ad_add_tools = Template(r"../picture/game_page/ad_add_tools.png", record_pos=(-0.111, 0.373),
+                            resolution=(1440, 3088))
+    # 新增加的获得道具弹窗中的用金币获得道具
+    coins_button = Template(r"../picture/game_page/coins_button.png", record_pos=(-0.103, 0.168),
+                            resolution=(1440, 3088))
+    # 开宝箱的看广告按钮A组
+    reward_Ad = Template(r"../picture/game_page/reward_Ad.png", record_pos=(-0.137, 0.569), resolution=(1440, 3088))
+    # 设置页面的收藏页面入口
+    game_goto_shop_button = Template(r"../picture/game_page/game_goto_shop_button.png", record_pos=(-0.315, 0.069),
+                                     resolution=(1440, 3088))
+    # debug输入关卡之后的close按钮
+    debug_close = Template(r"../picture/game_page/debug_close.png", record_pos=(0.438, -0.956), resolution=(1440, 3088))
 
     def game_victory(self):
         """
         点击游戏胜利页面的胜利按钮进入下一关
         :return:
         """
-        # if exists(self.next_button):
-        #     self.image_click(self.next_button)
-        # else:
-        #     self.image_click([645, 1994])
-        #     self.sleep_time()
-        self.image_click([734, 2172])
+        self.sleep_time(6)
+        if exists(self.victory_english_button):
+            self.image_click(self.victory_english_button)
+        else:
+            self.image_click([696, 2468])
+        self.sleep_time()
+
+        # picList = [self.victory_english_button, self.claim_button]  # 截图的图片对象列表
+        # for pic in picList:
+        #     pos = exists(pic)
+        #     if pos:
+        #         self.image_click(pos)
         return self
 
     def goto_setting(self):
@@ -139,6 +168,17 @@ class GamePage(BaseElement):
             self.image_click([1330, 225])
         return self
 
+    def add_tool_page(self):
+        """
+        1.0.5新增加弹窗：
+        点击获得道具时弹出
+        :return:
+        """
+        self.image_click(self.ad_add_tools)
+        self.sleep_time()
+        self.image_click([761, 2059])
+        return self
+
     def get_debug(self):
         """
         打开debug与展开debug
@@ -186,11 +226,18 @@ class GamePage(BaseElement):
         在特殊关卡说明页面点击play，进入特殊关卡
         :return:
         """
-        if exists(self.special_play_button):
-            self.image_click(self.special_play_button)
-        else:
-            self.image_click([757, 1972])
         self.sleep_time()
+        # poco = UnityPoco()
+        # poco("PlayButton").click()
+        self.sleep_time()
+        self.image_click([707, 2192])
+        self.sleep_time()
+        # self.image_click([732, 2477])
+        # if exists(self.special_play_button):
+        #     self.image_click(self.special_play_button)
+        # else:
+        #     self.image_click([757, 1972])
+        # self.sleep_time()
         return self
 
     def game_back(self):
@@ -254,14 +301,79 @@ class GamePage(BaseElement):
         return self
 
     def ad_close(self):
-        self.sleep_time(15)
-        self.keyevent_command("BACK")
+        self.sleep_time(4)
+        if exists(self.victory_english_button):
+            return self
+        else:
+            self.sleep_time(15)
+            if exists(self.ad_close_button):
+                self.image_click(self.ad_close_button)
+            else:
+                self.keyevent_command("BACK")
+                self.image_click([1384, 152])
         return self
 
+    def victory_ad(self):
+        """
+        点击胜利之后出现广告，关掉广告之后点击结算页面的next按钮
+        :return:
+        """
+        self.debug_win().ad_close().game_victory()
+        return self
+
+    def claim_click(self):
+        """
+        点击开启宝箱的claim按钮
+        :return:
+        """
+        self.sleep_time()
+        if exists(self.claim_button):
+            self.image_click(self.claim_button)
+        return self
+
+    def double_claim_click(self):
+        """
+        点击开启双倍宝箱
+        :return:
+        """
+        self.sleep_time()
+        if exists(self.reward_Ad):
+            self.image_click(self.reward_Ad)
+        return self
+
+    def setting_goto_shop(self):
+        """
+        从设置页面进入shop页面
+        :return:
+        """
+        self.sleep_time(1)
+        if exists(self.game_goto_shop_button):
+            self.image_click(self.game_goto_shop_button)
+        else:
+            self.image_click([771, 1627])
+        return self
+
+    def debug_input_close(self):
+        self.sleep_time(1)
+        if exists(self.debug_close):
+            self.image_click(self.debug_close)
+        else:
+            self.image_click([1337, 147])
+        return self
+
+    def debug_change_level(self, times, word):
+        """
+        使用debug进入对应的关卡
+        :param times:删除已经存在的关卡
+        :param word:输入对应的关卡内容
+        :return:
+        """
+        self.debug_goto_normal().debug_get_level_site().delete_word(times).input_word(word).debug_input_close()
+        return self
 
 
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
-    GamePage().goto_level2_get_debug()
+    GamePage().setting_goto_shop()

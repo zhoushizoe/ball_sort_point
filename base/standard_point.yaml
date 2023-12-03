@@ -38,3 +38,29 @@ item_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : item_click"
 get_item: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : get_item"
 # 道具使用成功	玩家发生道具使用时上报
 item_action: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : item_action"
+# 特殊关点击退出弹窗展示	特殊关点击退出弹窗展示时上报
+special_quit_show: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : special_quit_show"
+# 特殊关点击退出弹窗展示	点击特殊关退出弹窗
+special_quit_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : special_quit_click"
+# 加金币成功	玩家看完激励，成功获得加金币奖励时上报
+add_coin_success: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : add_coin_success"
+# 关卡宝箱展示	关卡宝箱页开始展示时上报
+level_chest_show: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : level_chest_show"
+# 关卡宝箱打开	关卡宝箱页打开时上报
+level_chest_open: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : level_chest_open"
+# 关卡宝箱奖励获取	"关卡宝箱奖励成功获取时上报
+level_chest_reward_get: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : level_chest_reward_get"
+# 宝箱奖励领取	点击宝箱奖励按钮时点击
+level_chest_claim: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : level_chest_claim"
+# 收藏界面展示	收藏界面展示时上报
+collection_pv: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : collection_pv"
+# 更换背景	点击更换背景成功时上报
+theme_change_success: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : theme_change_success"
+# 更换管子	点击更换管子成功时上报
+tube_change_success: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : tube_change_success"
+# 更换球	点击更换球成功时上报
+ball_change_success: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : ball_change_success"
+# 点击加金币	点击底部加金币按钮时上报
+add_coin_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : add_coin_click"
+# 买皮肤	点击购买管皮肤/主题/球皮肤时上报
+buy_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : buy_click"

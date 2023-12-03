@@ -86,7 +86,7 @@ class GetPoint:
         :return:
         """
         with open("test.txt", "a", encoding="utf-8") as f:
-            f.write(self.get_correct_log(key) + "\n")
+            f.write(self.output_command(key) + "\n")
         return self
 
     def contrast_step(self, key):
@@ -96,9 +96,9 @@ class GetPoint:
         """
         self.read_point(key)
         self.output_command(key)
-        self.get_correct_log(key)
+        # self.get_correct_log(key)
         self.write_contrast2(key)
 
 
 if __name__ == "__main__":
-    GetPoint().clear_command().get_correct_log("game_new_start")
+    GetPoint().clear_command().contrast_step("item_click")

@@ -17,6 +17,7 @@ class ShopPage(BaseElement):
                                 resolution=(1440, 3088))
     back_home_button = Template(r"../picture/shop_page/back_home_button.png", record_pos=(-0.382, -0.906),
                                 resolution=(1440, 3088))
+    get_ad_coins =Template(r"../picture/shop_page/get_ad_coins.png", record_pos=(0.058, 0.776), resolution=(1440, 3088))
 
     def lock_tube(self):
         if exists(self.unlocked_tube):
@@ -71,4 +72,12 @@ class ShopPage(BaseElement):
         else:
             self.image_click([150, 254])
         self.sleep_time()
+        return self
+
+    def ad_coins_click(self):
+        self.sleep_time()
+        if exists(self.get_ad_coins):
+            self.image_click(self.get_ad_coins)
+        else:
+            self.image_click([752, 2644])
         return self

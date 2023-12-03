@@ -1,5 +1,6 @@
 import subprocess
 
+import pytest
 from airtest.cli.parser import cli_setup
 from airtest.core.api import *
 from page.gameplay_guide_page import GamePlayGuide
@@ -30,9 +31,11 @@ class TestPoint(BaseElement, GetPoint):
     def goto_level2(self):
         self.PrivacyPage = PrivacyPage()
         self.PrivacyPage.first_open_android().click_accept()
+        self.sleep_time()
         self.GamePage = GamePage()
         self.GamePage.get_debug().get_debug()
         self.GamePage.debug_win()
+        self.sleep_time(4)
         self.GamePage.game_victory().get_debug()
         return self
 
@@ -82,7 +85,7 @@ class TestPoint(BaseElement, GetPoint):
         self.PrivacyPage.click_policy_close()
         self.clear_command()
         self.PrivacyPage.click_privacy_policy()
-        # self.contrast_step(point)
+        self.contrast_step(point)
 
     def test5_privacy_click(self):
         """
@@ -179,7 +182,7 @@ class TestPoint(BaseElement, GetPoint):
         point = "game_new_start"
         self.HomePage = HomePage()
         self.GamePage = GamePage()
-        self.HomePage.home_goto_game()
+        # self.HomePage.home_goto_game()
         self.GamePage.get_debug().get_debug().debug_win()
         self.clear_command()
         self.GamePage.game_victory()
@@ -228,7 +231,7 @@ class TestPoint(BaseElement, GetPoint):
         point = "game_new_start"
         self.GamePage = GamePage()
         (self.GamePage.get_debug().get_debug().debug_win().game_victory().debug_win().
-         game_victory().debug_win().setting_close().game_victory().debug_win().game_victory())
+         game_victory().debug_win().setting_close().game_victory().debug_win().ad_close().game_victory())
         self.clear_command()
         self.GamePage.special_play()
         self.contrast_step(point)
@@ -246,6 +249,7 @@ class TestPoint(BaseElement, GetPoint):
         self.GamePage.get_debug()
         # 点击重开一次
         self.GamePage.click_restart()
+        self.sleep_time()
         self.image_click([113, 1450]).image_click([1061, 1474]).image_click([619, 1332]).image_click([1312, 934])
         self.clear_command()
         self.keyevent_command("HOME")
@@ -262,7 +266,7 @@ class TestPoint(BaseElement, GetPoint):
         point = "game_continue"
         self.GamePage = GamePage()
         self.GamePage.game_back()
-        self.GamePage.quit_special()
+        self.GamePage.quit_special().ad_close()
         self.sleep_time()
         self.GamePage.click_restart().click_restart()
         self.clear_command()
@@ -355,19 +359,19 @@ class TestPoint(BaseElement, GetPoint):
         self.sleep_time()
         self.contrast_step(point)
 
-    def test20_home_page(self):
-        """
-        从收藏页面回到首页
-        :return:
-        """
-        point = "home_page"
-        self.HomePage = HomePage()
-        self.ShopPage = ShopPage()
-        self.HomePage.goto_shop()
-        self.clear_command()
-        self.ShopPage.shop_back_home()
-        self.sleep_time()
-        self.contrast_step(point)
+    # def test20_home_page(self):
+    #     """
+    #     从收藏页面回到首页
+    #     :return:
+    #     """
+    #     point = "home_page"
+    #     self.HomePage = HomePage()
+    #     self.ShopPage = ShopPage()
+    #     self.HomePage.goto_shop()
+    #     self.clear_command()
+    #     self.ShopPage.shop_back_home()
+    #     self.sleep_time()
+    #     self.contrast_step(point)
 
     def test21_game_page(self):
         """
@@ -382,6 +386,10 @@ class TestPoint(BaseElement, GetPoint):
         self.contrast_step(point)
 
     def test22_home_play_click(self):
+        """
+        点击首页level按钮
+        :return:
+        """
         point = "home_play_click"
         self.HomePage = HomePage()
         self.clear_command()
@@ -576,7 +584,7 @@ class TestPoint(BaseElement, GetPoint):
         self.sleep_time()
         self.GamePage.add_tube().add_tube()
         self.clear_command()
-        self.GamePage.add_tube()
+        self.GamePage.add_tube().add_tool_page()
         self.sleep_time()
         self.stop_app(ballsort_package)
         self.contrast_step(point)
@@ -594,8 +602,8 @@ class TestPoint(BaseElement, GetPoint):
         self.GamePage.get_debug().get_debug().get_debug().debug_win()
         for i in range(3):
             self.GamePage.game_victory().debug_win()
-        self.GamePage.setting_close().game_victory().debug_win().game_victory()
-        self.GamePage.ad_close()
+        self.GamePage.setting_close().game_victory().debug_win().ad_close().game_victory()
+        # self.GamePage.ad_close()
         self.sleep_time()
         self.GamePage.game_victory()
         self.GamePage.special_play().game_back().quit_special()
@@ -656,4 +664,346 @@ class TestPoint(BaseElement, GetPoint):
         self.contrast_step(point)
         return self
 
-   
+    def test36_get_item_item_type(self):
+        """
+        获得道具	每次玩家获得道具，数量增加时上报
+        item_type:1加瓶
+        :return:
+        """
+        point = "get_item"
+        self.goto_level2()
+        self.sleep_time()
+        self.GamePage.add_tube().add_tube()
+        self.GamePage.add_tube().add_tool_page()
+        self.clear_command()
+        self.sleep_time()
+        self.GamePage.ad_close()
+        self.sleep_time()
+        self.contrast_step(point)
+        return self
+
+    def test37_get_item_item_type(self):
+        """
+        获得道具	每次玩家获得道具，数量增加时上报
+        item_type:2撤回
+        :return:
+        """
+        point = "get_item"
+        level2_first_tube = [319, 1469]
+        level2_second_tube = [742, 1479]
+        self.goto_level2()
+        self.sleep_time()
+        for i in range(5):
+            self.image_click(level2_first_tube).image_click(level2_second_tube)
+            self.sleep_time(1)
+            self.GamePage.click_withdraw()
+        self.GamePage.click_withdraw().add_tool_page()
+        self.clear_command()
+        self.sleep_time()
+        self.GamePage.ad_close()
+        self.sleep_time()
+        self.contrast_step(point)
+        return self
+
+    def test38_get_item_from_chest(self):
+        """
+        获得道具，每次玩家获得道具，数量增加时上报
+        from: level_chest,从关卡宝箱中获取
+        :return:
+        """
+        point = "get_item"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        for i in range(3):
+            self.GamePage.game_victory().debug_win()
+        self.GamePage.setting_close().game_victory().debug_win().ad_close().game_victory()
+        # self.GamePage.ad_close()
+        self.sleep_time()
+        self.GamePage.game_victory()
+        self.GamePage.special_play().game_back().quit_special()
+        self.GamePage.ad_close()
+        self.GamePage.victory_ad().debug_win().ad_close().game_victory().debug_win().ad_close().game_victory()
+        self.clear_command()
+        self.GamePage.claim_click().ad_close()
+        self.contrast_step(point)
+        return self
+
+    def test39_special_quit_show(self):
+        """
+        特殊关点击退出弹窗展示	特殊关点击退出弹窗展示时上报
+        :return:
+        """
+        point = "special_quit_show"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        for i in range(3):
+            self.GamePage.game_victory().debug_win()
+        self.GamePage.setting_close().game_victory().debug_win().ad_close().game_victory()
+        # self.GamePage.ad_close()
+        self.sleep_time()
+        self.GamePage.game_victory().special_play()
+        self.clear_command()
+        self.GamePage.game_back()
+        self.contrast_step(point)
+        return self
+
+    def test40_special_quit_click_close(self):
+        """
+        特殊关点击退出弹窗展示	点击特殊关退出弹窗
+        result:close
+        :return:
+        """
+        point = "special_quit_click"
+        self.clear_command()
+        self.GamePage = GamePage()
+        self.GamePage.setting_close()
+        self.contrast_step(point)
+        return self
+
+    def test41_special_quit_click_ok(self):
+        """
+        特殊关点击退出弹窗展示	点击特殊关退出弹窗
+        result:ok
+        :return:
+        """
+        point = "special_quit_click"
+        self.GamePage = GamePage()
+        self.GamePage.game_back()
+        self.clear_command()
+        self.GamePage.quit_special()
+        self.contrast_step(point)
+        return self
+
+    def test42_level_chest_show(self):
+        """
+        关卡宝箱展示	关卡宝箱页开始展示时上报
+        :return:
+        """
+        point = "level_chest_show"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        for i in range(3):
+            self.GamePage.game_victory().debug_win()
+        self.GamePage.setting_close().game_victory().debug_win().ad_close().game_victory()
+        self.sleep_time()
+        self.GamePage.game_victory()
+        self.GamePage.special_play().game_back().quit_special()
+        self.GamePage.ad_close()
+        self.GamePage.victory_ad().debug_win().ad_close().game_victory()
+        self.clear_command()
+        self.GamePage.debug_win().ad_close()
+        # self.GamePage.claim_click().ad_close()
+        self.contrast_step(point)
+        return self
+
+    def test43_level_chest_open(self):
+        """
+        关卡宝箱打开	关卡宝箱页打开时上报
+        :return:
+        """
+        point = "level_chest_open"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        for i in range(3):
+            self.GamePage.game_victory().debug_win()
+        self.GamePage.setting_close().game_victory().debug_win().ad_close().game_victory()
+        self.sleep_time()
+        self.GamePage.game_victory()
+        self.GamePage.special_play().game_back().quit_special()
+        self.GamePage.ad_close()
+        self.GamePage.victory_ad().debug_win().ad_close().game_victory()
+        self.clear_command()
+        self.GamePage.debug_win().ad_close()
+        # self.GamePage.claim_click().ad_close()
+        self.contrast_step(point)
+        return self
+
+    def test44_level_chest_reward_get(self):
+        """
+        关卡宝箱奖励获取	关卡宝箱奖励成功获取时上报
+
+        :return:
+        """
+        point = "level_chest_reward_get"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.claim_click()
+        self.contrast_step(point)
+        return self
+
+    def test45_level_chest_claim_n(self):
+        """
+        宝箱奖励领取	点击宝箱奖励按钮时点击
+        claim_type:N
+        """
+        point = "level_chest_claim"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        for i in range(3):
+            self.GamePage.game_victory().debug_win()
+        self.GamePage.setting_close().game_victory().debug_win().ad_close().game_victory()
+        self.sleep_time()
+        self.GamePage.game_victory()
+        self.GamePage.special_play().game_back().quit_special()
+        self.GamePage.ad_close()
+        self.GamePage.victory_ad().debug_win().ad_close().game_victory()
+        self.GamePage.debug_win().ad_close()
+        self.clear_command()
+        self.GamePage.double_claim_click().ad_close()
+        self.contrast_step(point)
+        return self
+
+    def test46_level_chest_claim_1(self):
+        """
+        宝箱奖励领取	点击宝箱奖励按钮时点击
+        claim_type:1
+        """
+        point = "level_chest_claim"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        for i in range(3):
+            self.GamePage.game_victory().debug_win()
+        self.GamePage.setting_close().game_victory().debug_win().ad_close().game_victory()
+        self.sleep_time()
+        self.GamePage.game_victory()
+        self.GamePage.special_play().game_back().quit_special()
+        self.GamePage.ad_close()
+        self.GamePage.victory_ad().debug_win().ad_close().game_victory()
+        self.GamePage.debug_win().ad_close()
+        self.clear_command()
+        self.GamePage.claim_click().ad_close()
+        self.contrast_step(point)
+        return self
+
+    def test47_collection_pv_game(self):
+        """
+        收藏界面展示	收藏界面展示时上报
+        from:game
+        :return:
+        """
+        point = "collection_pv"
+        self.goto_level2()
+        self.GamePage.goto_setting()
+        self.clear_command()
+        self.GamePage.setting_goto_shop()
+        self.contrast_step(point)
+        return self
+
+    def test48_collection_pv_home(self):
+        """
+        收藏界面展示	收藏界面展示时上报
+        from:home
+        :return:
+        """
+        point = "collection_pv"
+        self.GamePage = GamePage()
+        self.HomePage = HomePage()
+        self.GamePage.game_back().goto_setting().goto_home()
+        self.clear_command()
+        self.HomePage.goto_shop()
+        self.contrast_step(point)
+        return self
+
+    def test49_tube_change_success(self):
+        """
+
+        更换管子	点击更换管子成功时上报
+        :return:
+        """
+        point = "tube_change_success"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug()
+        self.ShopPage = ShopPage()
+        self.GamePage.debug_change_level(2, "30").goto_setting().setting_goto_shop()
+        self.sleep_time()
+        self.clear_command()
+        self.image_click([938, 1052])
+        self.contrast_step(point)
+        return self
+
+    def test50_theme_change_success(self):
+        """
+        更换背景	点击更换背景成功时上报
+        :return:
+        """
+        point = "theme_change_success"
+        self.ShopPage = ShopPage()
+        self.ShopPage.goto_background()
+        self.clear_command()
+        self.image_click([938, 1052])
+        self.contrast_step(point)
+        return self
+
+    def test51_ball_change_success(self):
+        """
+        更换球	点击更换球成功时上报
+        :return:
+        """
+        point = "ball_change_success"
+        self.ShopPage = ShopPage()
+        self.ShopPage.goto_ball()
+        self.clear_command()
+        self.image_click([938, 1052])
+        self.contrast_step(point)
+        return self
+
+    def test51_add_coin_click_tube(self):
+        """
+        点击加金币	点击底部加金币按钮时上报
+        page:tube
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "add_coin_click"
+        self.ShopPage = ShopPage()
+        self.HomePage = HomePage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.goto_shop()
+        self.clear_command()
+        self.ShopPage.ad_coins_click()
+        self.contrast_step(point)
+        return self
+
+    def test52_add_coin_click_theme(self):
+        """
+        点击加金币	点击底部加金币按钮时上报
+        page:theme
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "add_coin_click"
+        self.ShopPage = ShopPage()
+        self.HomePage = HomePage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.goto_shop()
+        self.ShopPage.goto_background()
+        self.sleep_time(1)
+        self.clear_command()
+        self.ShopPage.ad_coins_click()
+        self.contrast_step(point)
+        return self
+
+    def test53_add_coin_click_ball(self):
+        """
+        点击加金币	点击底部加金币按钮时上报
+        page:ball
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "add_coin_click"
+        self.ShopPage = ShopPage()
+        self.HomePage = HomePage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.goto_shop()
+        self.ShopPage.goto_ball()
+        self.sleep_time(1)
+        self.clear_command()
+        self.ShopPage.ad_coins_click()
+        self.contrast_step(point)
+        return self

@@ -7,7 +7,7 @@ import subprocess
 from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 from poco.drivers.ios import iosPoco
-
+from poco.drivers.unity3d import UnityPoco
 name = "你好"
 language = "英语"
 
@@ -40,16 +40,6 @@ class BaseElement:
         start_app(package)
         sleep(5)
 
-    # 删除输入的文字
-    def delete_word(self, times):
-        for i in range(times):
-            keyevent("KEYCODE_DEL")
-            sleep(0.5)
-
-    # 输入所需要的文字
-    def input_word(self, word):
-        text(word)
-        sleep(0.5)
 
     # 睡眠的时间
     def sleep_time(self, second=2):
@@ -90,10 +80,35 @@ class BaseElement:
         self.image_click([749, 2426])
         return self
 
+    def poco_click(self):
+        poco = UnityPoco()
+        poco("Setting").click()
+
+    def delete_word(self,times):
+        """
+        删除文字（安卓独有）
+        :return:
+        """
+        for i in range(times):
+            keyevent("KEYCODE_DEL")
+            sleep(0.5)
+        return self
+
+    # 输入所需要的文字
+    def input_word(self, word):
+        """
+        输入文字（安卓独有）
+        :param word:
+        :return:
+        """
+        text(word)
+        self.sleep_time(1)
+        return self
+
 
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
 
-    BaseElement().kill_app()
+    BaseElement().poco_click()

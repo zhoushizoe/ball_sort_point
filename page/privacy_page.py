@@ -13,7 +13,6 @@ class PrivacyPage(BaseElement, SortBallApp):
     ballsort_package = "game.ballsort.inner"
     ballsort_ios_package = "ios.game.ballsort.inner"
     package_name = "BallSort"
-
     ballsort_ios_install = r"/Users/amber/Downloads/BallSort_IOS_1040_1.ipa"
     system_notifications_button = Template(r"../picture/privacy_page/system_notifications_button.png",
                                            record_pos=(0.001, 0.447), resolution=(1440, 3088))
@@ -22,6 +21,11 @@ class PrivacyPage(BaseElement, SortBallApp):
     # 服务条款与隐私协议里的close按钮
     policy_close = Template(r"../picture/privacy_page/policy_close.png", record_pos=(0.0, 0.979),
                             resolution=(1440, 3088))
+    # 隐私弹窗页面的terms of services按钮
+    terms_of_services = Template(r"../picture/privacy_page/terms_of_services.png", record_pos=(0.07, -0.125),
+                                 resolution=(1440, 3088))
+    privacy_policy = Template(r"../picture/privacy_page/privacy_policy.png", record_pos=(-0.206, -0.06),
+                              resolution=(1440, 3088))
 
     language = "英语_13pro_max"
     name = rf"{language}/{language}"
@@ -86,7 +90,7 @@ class PrivacyPage(BaseElement, SortBallApp):
         点击terms_of_service按钮
         :return:
         """
-        self.image_click([823, 1357])
+        self.image_click(self.terms_of_services)
         if assert_exists(self.policy_close):
             return self
         else:
@@ -107,7 +111,7 @@ class PrivacyPage(BaseElement, SortBallApp):
         在隐私弹窗页面点击进入隐私弹窗h5页面
         :return:
         """
-        self.image_click([377, 1450])
+        self.image_click(self.privacy_policy)
         if assert_exists(self.policy_close):
             return self
         else:
