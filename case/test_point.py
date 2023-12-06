@@ -1007,3 +1007,795 @@ class TestPoint(BaseElement, GetPoint):
         self.ShopPage.ad_coins_click()
         self.contrast_step(point)
         return self
+
+    def test54_buy_click_tube(self):
+        """
+        买皮肤	点击购买管皮肤/主题/球皮肤时上报
+        type:tube
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "buy_click"
+        self.ShopPage = ShopPage()
+        self.HomePage = HomePage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.goto_shop()
+        self.clear_command()
+        self.ShopPage.buy_click()
+        self.contrast_step(point)
+        return self
+
+    def test55_buy_click_theme(self):
+        """
+        买皮肤
+        type:theme
+        :return:
+        """
+        point = "buy_click"
+        self.GamePage = GamePage()
+        self.ShopPage = ShopPage()
+        self.GamePage.setting_close()
+        self.ShopPage.goto_background()
+        self.clear_command()
+        self.ShopPage.buy_click()
+        self.contrast_step(point)
+        return self
+
+    def test56_buy_click_theme(self):
+        """
+        买皮肤
+        type:ball
+        :return:
+        """
+        point = "buy_click"
+        self.GamePage = GamePage()
+        self.ShopPage = ShopPage()
+        self.GamePage.setting_close()
+        self.ShopPage.goto_ball()
+        self.clear_command()
+        self.ShopPage.buy_click()
+        self.contrast_step(point)
+        return self
+
+    def test57_collection_award_popup(self):
+        """"
+        奖品弹窗
+        皮肤奖励弹窗展示
+        获得主题背景
+        """
+        point = "collection_award_popup"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug()
+        self.GamePage.debug_change_level(2, "8")
+        self.sleep_time()
+        self.GamePage.debug_win().ad_close()
+        self.clear_command()
+        self.GamePage.game_victory()
+        self.contrast_step(point)
+        return self
+
+    def test58_collection_award_popup_click(self):
+        """
+        奖品弹窗点击	皮肤奖励弹窗点击
+        :return:
+        button:later
+        """
+        point = "collection_award_popup_click"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.reward_page_no_use()
+        self.contrast_step(point)
+        return self
+
+    def test59_collection_award_popup(self):
+        """"
+        奖品弹窗
+        皮肤奖励弹窗展示
+        获得管背景
+        """
+        point = "collection_award_popup"
+        self.GamePage = GamePage()
+        self.GamePage.debug_change_level(2, "18")
+        self.sleep_time()
+        self.GamePage.debug_win().ad_close()
+        self.clear_command()
+        self.GamePage.game_victory()
+        self.contrast_step(point)
+        return self
+
+    def test60_collection_award_popup_click(self):
+        """
+        奖品弹窗点击	皮肤奖励弹窗点击
+        :return:
+        button:user
+        """
+        point = "collection_award_popup_click"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.reward_page_use()
+        self.contrast_step(point)
+        return self
+
+    def test61_collection_award_popup(self):
+        """"
+        奖品弹窗
+        皮肤奖励弹窗展示
+        获得球奖励
+        """
+        point = "collection_award_popup"
+        self.GamePage = GamePage()
+        self.GamePage.debug_change_level(2, "28")
+        self.sleep_time()
+        self.GamePage.debug_win().ad_close()
+        self.clear_command()
+        self.GamePage.game_victory()
+        self.contrast_step(point)
+        return self
+
+    def test62_collection_award_popup_click(self):
+        """
+        奖品弹窗点击	皮肤奖励弹窗点击
+        :return:
+        button:user
+        """
+        point = "collection_award_popup_click"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.reward_page_use()
+        self.contrast_step(point)
+        return self
+
+    def test63_click_get_new_skin(self):
+        """
+        点击获得新皮肤（未成功）	点击奖励弹窗现在使用，或者商城页点击获得时上报
+        from:reward
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "click_get_new_skin"
+        self.GamePage = GamePage()
+        self.GamePage.debug_change_level(2, "38")
+        self.sleep_time()
+        self.GamePage.debug_win().ad_close()
+        self.GamePage.game_victory()
+        self.clear_command()
+        self.GamePage.reward_page_use()
+        self.stop_app(ballsort_package)
+        self.contrast_step(point)
+        return self
+
+    def test64_click_get_new_skin(self):
+        """
+         点击获得新皮肤（未成功）	点击奖励弹窗现在使用，或者商城页点击获得时上报
+        from:shop
+        is_ad : ture
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "click_get_new_skin"
+        self.HomePage = HomePage()
+        self.ShopPage = ShopPage()
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.goto_shop()
+        self.clear_command()
+        self.ShopPage.ad_claim()
+        self.contrast_step(point)
+        self.stop_app(ballsort_package)
+        return self
+
+    def test65_click_get_new_skin(self):
+        """
+         点击获得新皮肤（未成功）	点击奖励弹窗现在使用，或者商城页点击获得时上报
+        from:shop
+        is_ad : false
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "click_get_new_skin"
+        self.HomePage = HomePage()
+        self.ShopPage = ShopPage()
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.goto_shop()
+        self.clear_command()
+        self.ShopPage.buy_click()
+        self.contrast_step(point)
+        return self
+
+    def test66_get_new_skin(self):
+        """
+        成功获得新皮肤	点击奖励弹窗现在使用，或者商城页点击获得时上报
+        is_ad:ture
+        from:shop
+        :return:
+        """
+        point = "get_new_skin"
+        self.GamePage = GamePage()
+        self.ShopPage = ShopPage()
+        self.GamePage.setting_close()
+        self.ShopPage.ad_claim()
+        self.clear_command()
+        self.GamePage.ad_close()
+        self.contrast_step(point)
+        return self
+
+    def test67_get_new_skin(self):
+        """
+        成功获得新皮肤	点击奖励弹窗现在使用，或者商城页点击获得时上报
+        is_ad:ture
+        from: reward
+        :return:
+        """
+        point = "get_new_skin"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug()
+        self.GamePage.debug_change_level(2, "88")
+        self.sleep_time()
+        self.GamePage.debug_win().ad_close()
+        self.GamePage.game_victory()
+        self.GamePage.reward_page_use()
+        self.clear_command()
+        self.GamePage.ad_close()
+        self.contrast_step(point)
+        return self
+
+    def test68_get_new_skin(self):
+        """
+        成功获得新皮肤	点击奖励弹窗现在使用，或者商城页点击获得时上报
+        is_ad:ture
+        from: reward
+        :return:
+        """
+        point = "get_new_skin"
+        self.GamePage = GamePage()
+        self.HomePage = HomePage()
+        self.ShopPage = ShopPage()
+        self.GamePage.goto_setting().goto_home()
+        self.HomePage.goto_shop()
+        for i in range(2):
+            self.ShopPage.goto_ball().ad_coins_click()
+            self.GamePage.ad_close()
+            self.sleep_time(302)
+        self.ShopPage.goto_ball().ad_coins_click()
+        self.GamePage.ad_close()
+        self.clear_command()
+        self.ShopPage.buy_click()
+        self.contrast_step(point)
+        return self
+
+    def test69_settings_pv(self):
+        """
+        设置弹窗展示	设置弹窗展示时上报
+        from: game
+        :return:
+        """
+        point = "settings_pv"
+        self.goto_level2()
+        self.clear_command()
+        self.GamePage.goto_setting()
+        self.contrast_step(point)
+        return self
+
+    def test70_settings_sound(self):
+        """
+        打开/关闭音效	设置弹窗点击音效开关时上报
+        result:off
+        :return:
+        """
+        point = "settings_sound"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.setting_close_sound()
+        self.contrast_step(point)
+        return self
+
+    def test71_settings_sound(self):
+        """
+        打开/关闭音效	设置弹窗点击音效开关时上报
+        result:on
+        :return:
+        """
+        self.test70_settings_sound()
+
+    def test72_settings_vibration(self):
+
+        """
+        打开/关闭振动	设置弹窗点击振动开关时上报
+        result:off
+        :return:
+        """
+        point = "settings_vibration"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.setting_close_vibration()
+        self.contrast_step(point)
+        return self
+
+    def test73_settings_vibration(self):
+        """
+        打开/关闭振动	设置弹窗点击振动开关时上报
+        result:on
+        :return:
+        """
+        point = "settings_vibration"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.setting_open_vibration()
+        self.contrast_step(point)
+        return self
+
+    def test74_settings_shop_click(self):
+        """
+        从设置打开商店页	设置点击商店入口时上报
+        :return:
+        """
+        point = "settings_shop_click"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.setting_goto_shop()
+        self.contrast_step(point)
+        return self
+
+    def test75_settings_contact(self):
+        """
+        联系我们	设置弹窗点击contact时上报
+        :return:
+        """
+        point = "settings_contact"
+        self.GamePage = GamePage()
+        self.ShopPage = ShopPage()
+        self.ShopPage.shop_back_home()
+        self.GamePage.goto_setting()
+        self.clear_command()
+        self.GamePage.goto_contact_us()
+        self.contrast_step(point)
+
+    def test76_settings_language(self):
+        """
+        语言选择	设置弹窗修改语言时上报
+        将英语调整为葡萄牙语
+        :return:
+        """
+        point = "settings_language"
+        self.keyevent_command("back").keyevent_command("back")
+        self.GamePage = GamePage()
+        self.GamePage.goto_setting().setting_language()
+        self.GamePage.change_language_espanol()
+        self.clear_command()
+        self.GamePage.language_ok()
+        self.contrast_step(point)
+
+    def test77_settings_pv(self):
+        """
+         设置弹窗展示	设置弹窗展示时上报
+        from: game
+        :return:
+        """
+
+        point = "settings_pv"
+        self.GamePage = GamePage()
+        self.GamePage.goto_home()
+        self.clear_command()
+        self.GamePage.goto_setting()
+        self.contrast_step(point)
+        return self
+
+    def test78_settings_sound(self):
+        """
+        打开/关闭音效	设置弹窗点击音效开关时上报
+        from: home
+        :return:
+        """
+        self.test70_settings_sound()
+        return self
+
+    def test79_settings_vibration(self):
+        """
+        打开/关闭振动	设置弹窗点击振动开关时上报
+        from: home
+        :return:
+        """
+        self.test72_settings_vibration()
+        return self
+
+    def get_rating_guide(self):
+        """
+        得到评分引导页面
+        :return:
+        """
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        self.GamePage.game_victory().debug_win().game_victory().debug_win()
+        return self
+
+    def test80_rating_guide_pv(self):
+        """
+        评分引导弹窗展示	评分引导弹窗展示时上报
+        :return:
+        """
+        point = "rating_guide_pv"
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug().debug_win()
+        self.GamePage.game_victory().debug_win().game_victory()
+        self.clear_command()
+        self.GamePage.debug_win()
+        # self.sleep_time()
+        self.contrast_step(point)
+        return self
+
+    def test81_rating_guide_click(self):
+        """
+        评分引导弹窗点击	评分引导弹窗点击时上报
+        result:0
+        :return:
+        """
+        point = "rating_guide_click"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.rating_zero_star()
+        self.contrast_step(point)
+        return self
+
+    def test82_rating_guide_click(self):
+        """
+        评分引导弹窗点击	评分引导弹窗点击时上报
+        result:1
+        :return:
+        """
+        point = "rating_guide_click"
+        self.GamePage = GamePage()
+        self.GamePage.click_one_star()
+        self.clear_command()
+        self.GamePage.rating_one_star()
+        self.contrast_step(point)
+        return self
+
+    def test83_rating_guide_click(self):
+        """
+        评分引导弹窗点击	评分引导弹窗点击时上报
+        result:5
+        :return:
+        """
+        point = "rating_guide_click"
+        self.GamePage = GamePage()
+        self.get_rating_guide()
+        self.GamePage.click_five_Star()
+        self.clear_command()
+        self.GamePage.rating_five_star()
+        self.contrast_step(point)
+        return self
+
+    def test84_home_back_click(self):
+        """
+        游戏中返回主页	游戏设置点击home时上报
+        :return:
+        """
+        point = "home_back_click"
+        self.goto_level2()
+        self.GamePage.goto_setting()
+        self.clear_command()
+        self.GamePage.goto_home()
+        self.contrast_step(point)
+
+    def test85_add_item_pop_show(self):
+        """
+        加道具弹窗展示	加道具弹窗展示时上报
+        item_type:1
+        :return:
+        """
+        point = "add_item_pop_show"
+        self.goto_level2()
+        self.sleep_time()
+        self.GamePage.add_tube().add_tube()
+        self.clear_command()
+        self.GamePage.add_tube()
+        self.contrast_step(point)
+        return self
+
+    def test86_add_item_pop_click(self):
+        """
+        加道具弹窗点击	点击加道具弹窗时上报
+        item_type:1
+        click_where:ad
+        :return:
+        """
+        point = "add_item_pop_click"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.add_tool_page()
+        self.contrast_step(point)
+        return self
+
+    def test87_add_item_pop_click(self):
+        """
+        加道具弹窗点击	点击加道具弹窗时上报
+        where :money_buy
+        :return:
+        """
+        point = "add_item_pop_click"
+        ballsort_package = "game.ballsort.inner"
+        self.GamePage = GamePage()
+        self.HomePage = HomePage()
+        self.ShopPage = ShopPage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.home_goto_game()
+        self.GamePage.add_tube()
+        self.clear_command()
+        self.ShopPage.ad_coins_click()
+        self.contrast_step(point)
+        return self
+
+    def test88_add_item_pop_click(self):
+        """
+        加道具弹窗点击	点击加道具弹窗时上报
+        where :add_coin
+        :return:
+        """
+        point = "add_item_pop_click"
+        self.GamePage = GamePage()
+        self.GamePage.setting_close()
+        self.clear_command()
+        self.GamePage.add_coin_click()
+        self.contrast_step(point)
+
+    def test89_item_pop_show(self):
+        point = "add_item_pop_click"
+        level2_first_tube = [255, 1346]
+        level2_second_tube = [540, 1405]
+        self.GamePage = GamePage()
+        self.GamePage.setting_close().setting_close()
+        self.sleep_time(3)
+        for i in range(5):
+            self.image_click(level2_first_tube)
+            self.sleep_time(1)
+            self.image_click(level2_second_tube)
+            self.sleep_time(1)
+            self.GamePage.click_withdraw()
+        self.GamePage.click_withdraw()
+        self.clear_command()
+        self.GamePage.setting_close()
+        self.contrast_step(point)
+        return self
+
+    def test90_get_coins_popshow(self):
+        """
+        加金币弹窗展示
+        type:tube
+        from:no_money_buy_skin
+        :return:
+        """
+        point = "get_coins_popshow"
+        self.ShopPage = ShopPage()
+        self.goto_level2()
+        self.GamePage.goto_setting().setting_goto_shop()
+        self.clear_command()
+        self.ShopPage.get_coins()
+        self.contrast_step(point)
+        return self
+
+    def test91_get_coins_popshowclick(self):
+        """
+        加金币弹窗点击
+        from: no_money_buy_skin
+        :return:
+        """
+        point = "get_coins_popshowclick"
+        self.ShopPage = ShopPage()
+        self.clear_command()
+        self.ShopPage.click_get_coin_ad()
+        self.contrast_step(point)
+        return self
+
+    def test92_get_coins_popshow(self):
+        """
+        加金币弹窗展示
+        type:theme
+        from:no_money_buy_skin
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "get_coins_popshow"
+        self.ShopPage = ShopPage()
+        self.HomePage = HomePage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(3)
+        self.HomePage.goto_shop()
+        self.ShopPage.goto_background()
+        self.clear_command()
+        self.ShopPage.get_coins()
+        self.contrast_step(point)
+        return self
+
+    def test93_get_coins_popshowclick(self):
+        """
+        加金币弹窗点击
+        from: no_money_buy_skin
+        :return:
+        """
+        point = "get_coins_popshowclick"
+        self.ShopPage = ShopPage()
+        self.clear_command()
+        self.ShopPage.click_get_coin_ad()
+        self.contrast_step(point)
+        return self
+
+    def test94__get_coins_popshow(self):
+        """
+        加金币弹窗展示
+        type:ball
+        from:no_money_buy_skin
+        :return:
+        """
+        ballsort_package = "game.ballsort.inner"
+        point = "get_coins_popshow"
+        self.ShopPage = ShopPage()
+        self.HomePage = HomePage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(3)
+        self.HomePage.goto_shop()
+        self.ShopPage.goto_ball()
+        self.clear_command()
+        self.ShopPage.get_coins()
+        self.contrast_step(point)
+        return self
+
+    def test95_get_coins_popshowclick(self):
+        """
+        加金币弹窗点击
+        from: no_money_buy_skin
+        :return:
+        """
+        point = "get_coins_popshowclick"
+        self.ShopPage = ShopPage()
+        self.clear_command()
+        self.ShopPage.click_get_coin_ad()
+        self.contrast_step(point)
+        return self
+
+    def test96_get_coins_popshow(self):
+        """
+        加金币弹窗展示
+        type：item
+        from: no_money_buy_item
+        :return:
+        """
+        point = "get_coins_popshow"
+        self.ShopPage = ShopPage()
+        self.goto_level2()
+        self.GamePage.add_tube().add_tube().add_tube()
+        self.clear_command()
+        self.ShopPage.ad_coins_click()
+        self.contrast_step(point)
+        return self
+
+    def test97_get_coins_popshowclick(self):
+        """
+        加金币弹窗点击
+        from: no_money_buy_item
+        where:close
+        :return:
+        """
+        point = "get_coins_popshowclick"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.setting_close()
+        self.contrast_step(point)
+        return self
+
+    def test98_get_coins_popshow(self):
+        """
+        结算页面点击金币加号
+        :return:
+        """
+        point = "get_coins_popshow"
+        self.ShopPage = ShopPage()
+        self.goto_level2()
+        self.GamePage.get_debug().get_debug().get_debug()
+        self.GamePage.debug_win()
+        self.clear_command()
+        self.GamePage.add_coin_click()
+        self.contrast_step(point)
+        return self
+
+    def test99_get_coins_popshowclick(self):
+        """
+        结算页面点击金币加号
+        :return:
+        """
+        point = "get_coins_popshowclick"
+        self.GamePage = GamePage()
+        self.clear_command()
+        self.GamePage.setting_close()
+        self.contrast_step(point)
+        return self
+
+    def test100_get_coins_popshow(self):
+        """
+        收藏页面加号入口
+        :return:
+        """
+        point = "get_coins_popshow"
+        ballsort_package = "game.ballsort.inner"
+        self.HomePage = HomePage()
+        self.ShopPage = ShopPage()
+        self.GamePage = GamePage()
+        self.stop_app(ballsort_package)
+        self.start_app(ballsort_package)
+        self.sleep_time(4)
+        self.HomePage.goto_shop()
+        self.clear_command()
+        self.GamePage.add_coin_click()
+        self.contrast_step(point)
+        return self
+
+    def test101_get_coins_popshowclick(self):
+        """
+        收藏页面点击金币加号
+        :return:
+        """
+        self.test99_get_coins_popshowclick()
+        return self
+
+    def test102_get_coins_popshow(self):
+        """
+        获得道具页面点击加号
+        :return:
+        """
+        point = "get_coins_popshow"
+        self.goto_level2()
+        self.GamePage.add_tube().add_tube().add_tube()
+        self.clear_command()
+        self.GamePage.add_coin_click()
+        self.contrast_step(point)
+        return self
+
+    def test103_get_coins_popshowclick(self):
+        """
+        获得管页面点击点击加号
+        :return:
+        """
+        self.test99_get_coins_popshowclick()
+        return self
+
+    def test104_get_coins_popshow(self):
+        """
+        获得撤回道具页面点击加号
+        :return:
+        """
+        point = "get_coins_popshow"
+        self.GamePage = GamePage()
+        self.GamePage.setting_close()
+        level2_first_tube = [255, 1346]
+        level2_second_tube = [540, 1405]
+        self.sleep_time(3)
+        for i in range(5):
+            self.image_click(level2_first_tube)
+            self.sleep_time(1)
+            self.image_click(level2_second_tube)
+            self.sleep_time(1)
+            self.GamePage.click_withdraw()
+        self.GamePage.click_withdraw()
+        self.clear_command()
+        self.GamePage.add_coin_click()
+        self.contrast_step(point)
+        return self
+
+    def test105_get_coins_popshowclick(self):
+        """
+        获得撤回道具页面点击点击加号
+        :return:
+        """
+        point = "get_coins_popshowclick"
+        self.ShopPage = ShopPage()
+        self.clear_command()
+        self.ShopPage.click_get_coin_ad()
+        self.contrast_step(point)
+        return self
+

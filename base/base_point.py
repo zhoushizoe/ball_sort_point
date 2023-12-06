@@ -45,7 +45,7 @@ class GetPoint:
             return get_data
 
     def output_command(self, key):
-        sleep(10)
+        # sleep(10)
         """
         过滤埋点
         """

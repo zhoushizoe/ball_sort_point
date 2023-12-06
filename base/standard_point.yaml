@@ -64,3 +64,37 @@ ball_change_success: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : ball_change
 add_coin_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : add_coin_click"
 # 买皮肤	点击购买管皮肤/主题/球皮肤时上报
 buy_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : buy_click"
+# 奖品弹窗	皮肤奖励弹窗展示
+collection_award_popup: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : collection_award_popup"
+# 奖品弹窗点击	皮肤奖励弹窗点击
+collection_award_popup_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : collection_award_popup_click"
+# 点击获得新皮肤（未成功）	点击奖励弹窗现在使用，或者商城页点击获得时上报
+click_get_new_skin: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : click_get_new_skin"
+# 成功获得新皮肤	点击奖励弹窗现在使用，或者商城页点击获得时上报
+get_new_skin: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : get_new_skin"
+# 设置弹窗展示	设置弹窗展示时上报
+settings_pv: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : settings_pv"
+# 打开/关闭音效	设置弹窗点击音效开关时上报
+settings_sound: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : settings_sound"
+# 打开/关闭振动	设置弹窗点击振动开关时上报
+settings_vibration: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : settings_vibration"
+# 从设置打开商店页	设置点击商店入口时上报
+settings_shop_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : settings_shop_click"
+# 联系我们	设置弹窗点击contact时上报
+settings_contact: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : settings_contact"
+# 语言选择	设置弹窗修改语言时上报
+settings_language: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : settings_language"
+# 评分引导弹窗展示	评分引导弹窗展示时上报
+rating_guide_pv: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : rating_guide_pv"
+# 评分引导弹窗点击	评分引导弹窗点击时上报
+rating_guide_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : rating_guide_click"
+# 游戏中返回主页	游戏设置点击home时上报
+home_back_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : home_back_click"
+# 加道具弹窗展示	加道具弹窗展示时上报
+add_item_pop_show: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : add_item_pop_show"
+# 加道具弹窗点击	点击加道具弹窗时上报
+add_item_pop_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : add_item_pop_click"
+# 加金币弹窗展示
+get_coins_popshow: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : get_coins_popshow"
+# 加金币弹窗点击
+get_coins_popshowclick: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : get_coins_popshowclick"

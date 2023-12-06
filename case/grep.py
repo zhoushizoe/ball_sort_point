@@ -1,5 +1,5 @@
 def get_file1():
-    with open("file1.txt", "r") as file1:
+    with open("test.txt", "r") as file1:
         lines1 = file1.readlines()
     filtered_lines = []
     for line in lines1:

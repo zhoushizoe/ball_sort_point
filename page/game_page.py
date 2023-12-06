@@ -10,6 +10,7 @@ from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 from base.base import BaseElement
 from page.home_page import HomePage
+from poco.drivers.unity3d import UnityPoco
 
 
 # from poco.drivers.android.uiautomation import AndroidUiautomationPoco
@@ -66,6 +67,37 @@ class GamePage(BaseElement):
                                      resolution=(1440, 3088))
     # debug输入关卡之后的close按钮
     debug_close = Template(r"../picture/game_page/debug_close.png", record_pos=(0.438, -0.956), resolution=(1440, 3088))
+    # 设置页面打开音效状态
+    setting_sound_open_button = Template(r"../picture/game_page/setting_sound_open_button.png",
+                                         record_pos=(-0.141, -0.253),
+                                         resolution=(1440, 3088))
+    # 设置页面关闭音效状态
+    setting_sound_close_button = Template(r"../picture/game_page/setting_sound_close_button.png",
+                                          record_pos=(-0.142, -0.255),
+                                          resolution=(1440, 3088))
+    # 设置页面震动开启状态
+    setting_vibration_open_button = Template(r"../picture/game_page/setting_vibration_open_button.png",
+                                             record_pos=(0.137, -0.258),
+                                             resolution=(1440, 3088))
+    # 设置页面震动关闭状态
+    setting_vibration_close_button = Template(r"../picture/game_page/setting_vibration_close_button.png",
+                                              record_pos=(0.142, -0.258),
+                                              resolution=(1440, 3088))
+
+    # 西班牙语调整
+    espanol_button = Template(r"../picture/game_page/espanol_button.png", target_pos=6, record_pos=(-0.028, -0.192),
+                              resolution=(1440, 3088))
+    # 英语调整
+    english_button = Template(r"../picture/game_page/english_button.png", target_pos=6, record_pos=(-0.035, -0.322),
+                              resolution=(1440, 3088))
+    # 语言选择ok
+    language_ok_button = Template(r"../picture/game_page/language_ok_button.png", record_pos=(0.001, 0.415),
+                                  resolution=(1440, 3088))
+    # 零颗星星
+    one_to_four_star = Template(r"../picture/game_page/one_to_four_star.png", record_pos=(0.015, 0.138),
+                                resolution=(1440, 3088))
+    five_star = Template(r"../picture/game_page/five_star.png", record_pos=(-0.011, 0.141), resolution=(1440, 3088))
+    zero_star = Template(r"../picture/game_page/zero_star.png", record_pos=(-0.002, 0.142), resolution=(1440, 3088))
 
     def game_victory(self):
         """
@@ -79,7 +111,7 @@ class GamePage(BaseElement):
             self.image_click([696, 2468])
         self.sleep_time()
 
-        # picList = [self.victory_english_button, self.claim_button]  # 截图的图片对象列表
+        # picList = [self.vtory_english_button, self.claim_button]  # 截图的图片对象列表
         # for pic in picList:
         #     pos = exists(pic)
         #     if pos:
@@ -371,9 +403,133 @@ class GamePage(BaseElement):
         self.debug_goto_normal().debug_get_level_site().delete_word(times).input_word(word).debug_input_close()
         return self
 
+    def setting_close_sound(self):
+        """
+        点击关闭音效
+        :return:
+        """
+        if exists(self.setting_sound_open_button):
+            self.image_click(self.setting_sound_open_button)
+        else:
+            self.image_click([505, 1148])
+        return self
+
+    def setting_open_sound(self):
+        """
+        点击开启音效
+        :return:
+        """
+        if exists(self.setting_sound_close_button):
+            self.image_click(self.setting_sound_close_button)
+        else:
+            self.image_click([505, 1148])
+
+        return self
+
+    def setting_close_vibration(self):
+        """
+        点击关闭震动
+        :return:
+        """
+        if exists(self.setting_vibration_open_button):
+            self.image_click(self.setting_vibration_open_button)
+        else:
+            self.image_click([908, 1158])
+        return self
+
+    def setting_open_vibration(self):
+        """
+        点击开启震动
+        :return:
+        """
+        if exists(self.setting_vibration_close_button):
+            self.image_click(self.setting_vibration_close_button)
+        else:
+            self.image_click([908, 1158])
+        return self
+
+    def change_language_espanol(self):
+        """
+        在语言选择页面点击西班牙语
+        :return:
+        """
+        self.image_click(self.espanol_button)
+        return self
+
+    def change_language_english(self):
+        """
+        在语言选择页面点击英语
+        :return:
+        """
+        self.image_click(self.english_button)
+        return self
+
+    def language_ok(self):
+        """
+        在语言选择页面点击ok
+        :return:
+        """
+        self.image_click(self.language_ok_button)
+        return self
+
+    def rating_zero_star(self):
+        """
+        评分引导零颗星星
+        :return:
+        """
+        self.image_click(self.zero_star)
+        return self
+
+    def rating_one_star(self):
+        """
+        评分引导一颗到四颗星星
+        :return:
+        """
+        self.image_click(self.one_to_four_star)
+        return self
+
+    def rating_five_star(self):
+        """
+        评分引导五颗星星
+        :return:
+        """
+        self.image_click(self.five_star)
+        return self
+
+    def click_one_star(self):
+        """
+        评分引导点击一颗星
+        :return:
+        """
+        self.image_click([294, 1445])
+        return self
+
+    def click_five_Star(self):
+        """
+        评分引导点击五颗星
+        :return:
+        """
+        self.image_click([1106, 1420])
+        return self
+
+    def add_coin_click(self):
+        """
+        点击加金币入口
+        :return:
+        """
+        self.image_click([978, 250])
+        self.image_click([1106, 245])
+        self.image_click([1125, 226])
+        return self
+
+    def add_coin_poco(self):
+        add_coin = "GoldIcon"
+        self.poco_click(add_coin)
+        return self
+
 
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
-    GamePage().setting_goto_shop()
+    GamePage().add_coin_poco()

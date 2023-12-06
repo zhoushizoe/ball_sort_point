@@ -80,9 +80,9 @@ class BaseElement:
         self.image_click([749, 2426])
         return self
 
-    def poco_click(self):
+    def poco_click(self,sele):
         poco = UnityPoco()
-        poco("Setting").click()
+        poco(sele).click()
 
     def delete_word(self,times):
         """
