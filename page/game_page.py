@@ -225,6 +225,7 @@ class GamePage(BaseElement):
         点击debug中的胜利按钮
         :return:
         """
+        self.sleep_time(2)
         if exists(self.debug_win_button):
             self.image_click(self.debug_win_button)
         else:
@@ -359,8 +360,8 @@ class GamePage(BaseElement):
         :return:
         """
         self.sleep_time()
-        if exists(self.claim_button):
-            self.image_click(self.claim_button)
+        self.image_click([742, 2600])
+        self.image_click([727, 2615])
         return self
 
     def double_claim_click(self):
@@ -371,6 +372,8 @@ class GamePage(BaseElement):
         self.sleep_time()
         if exists(self.reward_Ad):
             self.image_click(self.reward_Ad)
+        else:
+            self.image_click([712, 2394])
         return self
 
     def setting_goto_shop(self):
@@ -532,4 +535,4 @@ if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
             "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
-    GamePage().add_coin_poco()
+    GamePage().claim_click()

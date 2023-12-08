@@ -1,3 +1,4 @@
-12-03 16:05:11.518 23353 23456 I Unity   : [Info]A_ANALYSIS : FIREBASE     : EVENT_SEND       : privacy_click => {lib_net_status:WIFI,lib_event_timestamp:1701590711516}
-12-03 16:13:05.956 23353 23456 I Unity   : [Info]A_ANALYSIS : FIREBASE     : EVENT_SEND       : item_click => {activity_id:0,activity_name:classic,levelid:2,use_time:45,move_num:0,level_restart_num:0,level_start_num:1,action_type:1,rank_lid:2,lib_net_status:WIFI,lib_event_timestamp:1701591185952}
-12-03 16:13:06.755 23353 23456 I Unity   : [Info]A_ANALYSIS : FIREBASE     : EVENT_SEND       : item_click => {activity_id:0,activity_name:classic,levelid:2,use_time:45,move_num:0,level_restart_num:0,level_start_num:1,action_type:1,rank_lid:2,lib_net_status:WIFI,lib_event_timestamp:1701591186752}
+app_first_open => {
+privacy_pv => {
+terms_of_service_click => {click_scene:welcome,
+privacy_policy_click => {click_scene:welcome,

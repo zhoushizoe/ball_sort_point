@@ -14,7 +14,7 @@ def compare_files(file1, file2):
 
 
 file1 = r'/Users/amber/PycharmProjects/Sortball_副本/case/test.txt'
-file2 = r'/Users/amber/PycharmProjects/Sortball_副本/case/test2.txt'
+file2 = r'/Users/amber/PycharmProjects/Sortball_副本/case/standard_point.txt'
 
 result = compare_files(file1, file2)
 

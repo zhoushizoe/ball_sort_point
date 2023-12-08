@@ -98,3 +98,9 @@ add_item_pop_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : add_item_pop
 get_coins_popshow: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : get_coins_popshow"
 # 加金币弹窗点击
 get_coins_popshowclick: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : get_coins_popshowclick"
+# 用户最大开局关卡	game_win时刷新
+max_start_level: "A_ANALYSIS : FIREBASE     : USER_PROPERTY_SET    : max_start_level"
+# 玩家当前皮肤	初始化时，和有皮肤变更时
+skin_mode: "A_ANALYSIS : FIREBASE     : USER_PROPERTY_SET    : skin_mode"
+# 玩家当前拥有资源	玩家资源数量变更时
+resource_hold: "A_ANALYSIS : FIREBASE     : USER_PROPERTY_SET    : resource_hold"

@@ -1,14 +1,10 @@
-# coding = utf-8
-# Author: Zoe
-# File: base_point.py
-# Time: 2023/11/17 11:49
 import re
 import subprocess
 from airtest.core.api import *
 import yaml
 
 
-class GetPoint:
+class GetPointUser:
     """
     1.前置条件
     2.清除数据
@@ -57,23 +53,6 @@ class GetPoint:
         print(grep_output)
         return grep_output
 
-    def get_correct_log(self, key):
-        """
-        得到对应的想要的数据
-        :param key:
-        :return:
-        """
-        raw_string = self.output_command(key)
-        pattern = r'EVENT_SEND\s+:\s+(.*?)\s*lib_net_status:'
-        # 使用正则表达式提取目标部分
-        match = re.search(pattern, raw_string)
-        if match:
-            extracted_content = match.group(1)
-            # print(extracted_content)
-            extracted_string = extracted_content.strip()
-            return extracted_string
-        else:
-            print("没找到对应log")
 
     def get_correct_log_user(self, key):
         """
@@ -106,19 +85,8 @@ class GetPoint:
         :return:
         """
         with open("test.txt", "a", encoding="utf-8") as f:
-            f.write(self.get_correct_log(key) + "\n")
+            f.write(self.get_correct_log_user(key) + "\n")
         return self
-
-    def contrast_step(self, key):
-        """
-        点击操作之后的步骤
-        :return:
-        """
-        sleep(1)
-        self.read_point(key)
-        self.output_command(key)
-        self.get_correct_log(key)
-        self.write_contrast2(key)
 
     def contrast_step_user(self, key):
         """
@@ -133,4 +101,4 @@ class GetPoint:
 
 
 if __name__ == "__main__":
-    GetPoint().contrast_step_user("skin_mode")
+    GetPointUser().contrast_step_user("skin_mode")
