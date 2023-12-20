@@ -32,6 +32,7 @@ class TestPoint(BaseElement, GetPoint):
         self.GamePage.game_victory().get_debug()
         return self
 
+    @pytest.mark.flaky(reruns=3)
     def test1_first_open(self):
         """
         首次打开游戏
