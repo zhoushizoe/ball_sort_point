@@ -1,1 +1,1 @@
-app_first_open => {
+skin_mode => 6,1,1

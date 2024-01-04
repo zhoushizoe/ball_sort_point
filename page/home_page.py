@@ -12,6 +12,11 @@ class HomePage(BaseElement):
     shop_button = Template(r"../picture/home_page/shop_button.png", record_pos=(0.411, -0.908), resolution=(1440, 3088))
     level_button = Template(r"../picture/home_page/level_button.png", target_pos=6, record_pos=(-0.251, 0.578),
                             resolution=(1440, 3088))
+    # 去广告按钮
+    ads_button = Template(r"../picture/home_page/ads_button.png", record_pos=(-0.409, -0.752), resolution=(1440, 3088))
+    # 购买去广告按钮
+    buy_ads_button = Template(r"../picture/home_page/buy_ads_button.png", record_pos=(-0.008, 0.899),
+                              resolution=(1440, 3088))
 
     def goto_shop(self):
         """
@@ -59,6 +64,14 @@ class HomePage(BaseElement):
         else:
             self.image_click([786, 2365])
         self.sleep_time()
+        return self
+
+    def goto_ads_page(self):
+        self.image_click(self.ads_button)
+        return self
+
+    def buy_ads(self):
+        self.image_click(self.buy_ads_button)
         return self
 
 

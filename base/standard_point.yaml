@@ -104,3 +104,7 @@ max_start_level: "A_ANALYSIS : FIREBASE     : USER_PROPERTY_SET    : max_start_l
 skin_mode: "A_ANALYSIS : FIREBASE     : USER_PROPERTY_SET    : skin_mode"
 # 玩家当前拥有资源	玩家资源数量变更时
 resource_hold: "A_ANALYSIS : FIREBASE     : USER_PROPERTY_SET    : resource_hold"
+# 内购购买点击
+iap_purchase_click: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : iap_purchase_click"
+# 内购购买成功
+iap_purchase_success: "A_ANALYSIS : FIREBASE     : EVENT_SEND       : iap_purchase_click"

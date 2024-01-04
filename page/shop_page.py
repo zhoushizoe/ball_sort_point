@@ -43,7 +43,7 @@ class ShopPage(BaseElement):
         if exists(self.background_button):
             self.image_click(self.background_button)
         else:
-            self.image_click([728, 456])
+            self.image_click([711, 951])
         self.sleep_time(2)
         return self
 
@@ -55,7 +55,7 @@ class ShopPage(BaseElement):
         if exists(self.ball_button):
             self.image_click(self.ball_button)
         else:
-            self.image_click([895, 387])
+            self.image_click([1145, 956])
         self.sleep_time()
         return self
 
@@ -103,7 +103,7 @@ class ShopPage(BaseElement):
         if exists(self.buy_click_button):
             self.image_click(self.buy_click_button)
         else:
-            self.image_click([1001, 2179])
+            self.image_click([1168, 2092])
         return self
 
     def ad_claim(self):

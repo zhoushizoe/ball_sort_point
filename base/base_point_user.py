@@ -84,7 +84,7 @@ class GetPointUser:
         :param key:
         :return:
         """
-        with open("test.txt", "a", encoding="utf-8") as f:
+        with open("test1.txt", "a", encoding="utf-8") as f:
             f.write(self.get_correct_log_user(key) + "\n")
         return self
 

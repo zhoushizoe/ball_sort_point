@@ -13,7 +13,7 @@ class PrivacyPage(BaseElement, SortBallApp):
     ballsort_package = "game.ballsort.inner"
     ballsort_ios_package = "ios.game.ballsort.inner"
     package_name = "BallSort"
-    ballsort_ios_install = r"/Users/amber/Downloads/BallSort_IOS_1040_1.ipa"
+    ballsort_ios_install = r"/Users/amber/Downloads/IPA/WaterSort.ipa"
     system_notifications_button = Template(r"../picture/privacy_page/system_notifications_button.png",
                                            record_pos=(0.001, 0.447), resolution=(1440, 3088))
     accept_button = Template(r"../picture/privacy_page/accept_button.png", target_pos=6, record_pos=(-0.256, 0.194),
@@ -68,7 +68,7 @@ class PrivacyPage(BaseElement, SortBallApp):
         self.clear_app(self.ballsort_package)
         self.sleep_time()
         self.start_app(self.ballsort_package)
-        self.sleep_time(4)
+        self.sleep_time(6)
         self.image_click([712, 2482])
         self.sleep_time(4)
         return self
@@ -122,4 +122,5 @@ class PrivacyPage(BaseElement, SortBallApp):
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
-            "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
+            "ios:///http://127.0.0.1:8300", ])
+        PrivacyPage().first_open()

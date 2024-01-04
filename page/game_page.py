@@ -197,7 +197,8 @@ class GamePage(BaseElement):
         if exists(self.add_tube_button):
             self.image_click(self.add_tube_button)
         else:
-            self.image_click([1330, 225])
+            print("未找到元素")
+            self.image_click([862, 2690])
         return self
 
     def add_tool_page(self):
@@ -263,7 +264,7 @@ class GamePage(BaseElement):
         # poco = UnityPoco()
         # poco("PlayButton").click()
         self.sleep_time()
-        self.image_click([707, 2192])
+        self.image_click([937, 1880])
         self.sleep_time()
         # self.image_click([732, 2477])
         # if exists(self.special_play_button):
@@ -317,7 +318,7 @@ class GamePage(BaseElement):
         点击撤回道具，弹出无法撤回toast
         :return:
         """
-        self.image_click([1101, 221])
+        self.image_click([579, 2714])
         return self
 
     def click_restart(self):
@@ -534,5 +535,5 @@ class GamePage(BaseElement):
 if __name__ == "__main__":
     if not cli_setup():
         auto_setup(__file__, logdir=True, devices=[
-            "android://127.0.0.1:5037/R3CW10C3D9N?cap_method=ADBCAP&touch_method=MAXTOUCH&", ])
-    GamePage().claim_click()
+            "ios:///http://127.0.0.1:8300", ])
+    # GamePage().()
